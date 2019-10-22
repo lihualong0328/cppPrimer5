@@ -11,13 +11,13 @@ OBJECTS =  badgetc.exe bits.exe findbook.exe \
 
 # tells make to use the file "..\MS_makefile_template", which
 # defines general rules for making .obj and .exe files
-include ..\MS_makefile_template
+include ../MS_makefile_template
 
-LOCFLAGS = /I..\14
+LOCFLAGS = -I ../14
 
-findbook.obj: ..\14\Sales_data.h
+findbook.o: ../14/Sales_data.h
 
-findbook.exe: findbook.obj ..\14\Sales_data.obj
-	$(CPP) $(CPPFLAGS) findbook.obj ..\14\Sales_data.obj
+findbook.exe: findbook.o ../14/Sales_data.o
+	$(CPP) $(CPPFLAGS) findbook.o ../14/Sales_data.o
 
 

@@ -6,6 +6,6 @@ OBJECTS = arith-ex.exe arraysizeof.exe cond.exe \
 
 # tells make to use the file "..\MS_makefile_template", which
 # defines general rules for making .obj and .exe files
-include ..\MS_makefile_template
+include ../MS_makefile_template
 
-LOCFLAGS = /I..\2
+LOCFLAGS = -I ../2

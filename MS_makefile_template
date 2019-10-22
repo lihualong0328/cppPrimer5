@@ -2,8 +2,8 @@
 
 # /EHsc Enable exception handling
 # /nologo suppresses copyright notice
-CPP = cl
-CPPFLAGS = /EHsc /nologo $(LOCFLAGS)
+CPP = g++
+CPPFLAGS = -std=c++0x
 
 # Some programs include headers defined in earlier chapters
 # LOCFLAGS used to set tell the compiler where to find a
@@ -34,18 +34,18 @@ all: $(OBJECTS)
 
 # $< is a macro defined by make 
 #     $< refers to the file being processed (i.e., compiled or linked)
-.cpp.obj: 
-	$(CPP) $(CPPFLAGS) /c $< 
+%o:%cpp
+	$(CPP) -c $^ $(CPPFLAGS) $(LOCFLAGS)
 
 # rule that says how to make a .exe executable file from a .obj object file
-.obj.exe:
-	$(CPP) $(CPPFLAGS) $<
+%exe:%o
+	$(CPP) -o $@ $^
 
 # target to clean up the object files and any core files
 # executing "nmake clean" in a subdirectory will remove all
 # files named core or any file ending in .obj, or .stackdump
 clean:
-	del *.obj core *.stackdump
+	rm -rf *.o *.exe *.out *.gch
 
 # target to remove executable files as well as object and core files
 clobber: clean

@@ -7,24 +7,36 @@ C11_OBJECTS = useDebug.exe
 
 # tells make to use the file "..\MS_makefile_template", which
 # defines general rules for making .obj and .exe files
-include ..\MS_makefile_template
+include ../MS_makefile_template
 
-LOCFLAGS = /I..\1
+LOCFLAGS = -I ../1
 
 useScreen.exe: Screen.h
 
 Account.obj useAccount.obj: Account.h
 Debug.obj useDebug.obj: Debug.h
 
-useAccount.exe: Account.obj useAccount.obj
-	$(CPP) $(CPPFLAGS) $(LOCFLAGS) useAccount.obj Account.obj 
+#useAccount.exe: Account.obj useAccount.obj
+#	$(CPP) $(CPPFLAGS) $(LOCFLAGS) useAccount.obj Account.obj 
+#
+#useDebug.exe: Debug.obj useDebug.obj
+#	$(CPP) $(CPPFLAGS) $(LOCFLAGS) useDebug.obj Debug.obj 
+#
+#add_item.exe: add_item.obj Sales_data.obj
+#	$(CPP) $(CPPFLAGS) $(LOCFLAGS) add_item.obj Sales_data.obj \
+#
+#avg_price.exe: avg_price.obj Sales_data.obj
+#	$(CPP) $(CPPFLAGS) $(LOCFLAGS) avg_price.obj Sales_data.obj \
 
-useDebug.exe: Debug.obj useDebug.obj
-	$(CPP) $(CPPFLAGS) $(LOCFLAGS) useDebug.obj Debug.obj 
+useAccount.exe: Account.o useAccount.o
+	$(CPP) $(CPPFLAGS) $(LOCFLAGS) useAccount.o Account.o
 
-add_item.exe: add_item.obj Sales_data.obj
-	$(CPP) $(CPPFLAGS) $(LOCFLAGS) add_item.obj Sales_data.obj \
+useDebug.exe: Debug.o useDebug.o
+	$(CPP) $(CPPFLAGS) $(LOCFLAGS) useDebug.o Debug.o
 
-avg_price.exe: avg_price.obj Sales_data.obj
-	$(CPP) $(CPPFLAGS) $(LOCFLAGS) avg_price.obj Sales_data.obj \
+add_item.exe: add_item.o Sales_data.o
+	$(CPP) $(CPPFLAGS) $(LOCFLAGS) add_item.o Sales_data.o \
+
+avg_price.exe: avg_price.o Sales_data.o
+	$(CPP) $(CPPFLAGS) $(LOCFLAGS) avg_price.o Sales_data.o \
  

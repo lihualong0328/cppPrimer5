@@ -7,15 +7,22 @@ OBJECTS = arrRet.exe count-calls.exe errMsg_initList.exe \
 
 # tells make to use the file "..\MS_makefile_template", which
 # defines general rules for making .obj and .exe files
-include ..\MS_makefile_template
+include ../MS_makefile_template
 
 LOCFLAGS = 
 
-fact.obj mainmath.obj LocalMath.obj: LocalMath.h
+#fact.obj mainmath.obj LocalMath.obj: LocalMath.h
+#
+#fact.exe: fact.obj LocalMath.obj
+#	$(CPP) $(CPPFLAGS) fact.obj LocalMath.obj 
+#
+#mainmath.exe: mainmath.obj LocalMath.obj 
+#	$(CPP) $(CPPFLAGS) mainmath.obj LocalMath.obj 
+fact.o mainmath.o LocalMath.o: LocalMath.h
 
-fact.exe: fact.obj LocalMath.obj
-	$(CPP) $(CPPFLAGS) fact.obj LocalMath.obj 
+fact.exe: fact.o LocalMath.o
+	$(CPP) $(CPPFLAGS) fact.o LocalMath.o
 
-mainmath.exe: mainmath.obj LocalMath.obj 
-	$(CPP) $(CPPFLAGS) mainmath.obj LocalMath.obj 
+mainmath.exe: mainmath.o LocalMath.o 
+	$(CPP) $(CPPFLAGS) mainmath.o LocalMath.o
 

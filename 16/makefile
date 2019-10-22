@@ -7,30 +7,32 @@ OBJECTS = Array.exe array-parms4.exe \
 
 # tells make to use the file "..\MS_makefile_template", which
 # defines general rules for making .obj and .exe files
-include ..\MS_makefile_template
+include ../MS_makefile_template
 
-LOCFLAGS = /I..\14
+LOCFLAGS = -I../14
 
-SP.obj: DebugDelete.h
+SP.o: DebugDelete.h
 
-Vecmain.obj: Vec.h
+Vecmain.o: Vec.h
 
-compareDef.exe: compareDef.obj ..\14\Sales_data.obj
-	$(CPP) $(CPPFLAGS) $(LOCFLAGS) compareDef.obj ..\14\Sales_data.obj 
+compareDef.exe: compareDef.o ../14/Sales_data.o
+	$(CPP) $(CPPFLAGS) $(LOCFLAGS) compareDef.o ../14/Sales_data.o 
 
-qm.exe: qm.obj build.obj 
-	$(CPP) $(CPPFLAGS) $(LOCFLAGS) qm.obj build.obj 
+qm.exe: qm.o build.o 
+	$(CPP) $(CPPFLAGS) $(LOCFLAGS) qm.o build.o 
 
 specialized.exe: debug.cpp
-	$(CPP) /Fespecialized -D SPECIALIZED $(CPPFLAGS) $(LOCFLAGS) debug.cpp 
+	#$(CPP) /Fespecialized -D SPECIALIZED $(CPPFLAGS) $(LOCFLAGS) debug.cpp 
+	$(CPP) -D SPECIALIZED $(CPPFLAGS) $(LOCFLAGS) debug.cpp 
 
 overloaded.exe: debug.cpp
-	$(CPP) /Feoverloaded -D OVERCHAR $(CPPFLAGS) $(LOCFLAGS) debug.cpp 
+	#$(CPP) /Feoverloaded -D OVERCHAR $(CPPFLAGS) $(LOCFLAGS) debug.cpp 
+	$(CPP) -D OVERCHAR $(CPPFLAGS) $(LOCFLAGS) debug.cpp 
 
 debug.exe: debug.cpp
 	$(CPP) -D DEBUG $(CPPFLAGS) $(LOCFLAGS) debug.cpp 
 
-multiset.exe: multiset.obj Sales_data.obj
-	$(CPP) $(CPPFLAGS) $(LOCFLAGS) multiset.obj Sales_data.obj 
+multiset.exe: multiset.o Sales_data.o
+	$(CPP) $(CPPFLAGS) $(LOCFLAGS) multiset.o Sales_data.o 
  
 

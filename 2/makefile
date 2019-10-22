@@ -10,6 +10,6 @@ C11_OBJECTS = decl-ex.exe
 
 # tells make to use the file "..\MS_makefile_template", which
 # defines general rules for making .obj and .exe files
-include ..\MS_makefile_template
+include ../MS_makefile_template
 
-LOCFLAGS = /I..\1
+LOCFLAGS = -I ../1

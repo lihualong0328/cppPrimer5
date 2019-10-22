@@ -10,14 +10,14 @@ C11_OBJECTS = release.exe
 
 # tells make to use the file "..\MS_makefile_template", which
 # defines general rules for making .obj and .exe files
-include ..\MS_makefile_template
+include ../MS_makefile_template
 
 # 7 has Sales_data files, 6 has make_plural
-LOCFLAGS = /I..\7 -I..\6
+LOCFLAGS = -I../7 -I../6
 
-TextQuery.obj querymain.obj: TextQuery.h QueryResult.h
+TextQuery.o querymain.o: TextQuery.h QueryResult.h
 
-querymain.exe: querymain.obj TextQuery.obj
-	$(CPP) $(CPPFLAGS) $(LOCFLAGS) querymain.obj TextQuery.obj \
+querymain.exe: querymain.o TextQuery.o
+	$(CPP) $(CPPFLAGS) $(LOCFLAGS) querymain.o TextQuery.o \
 			-o querymain.exe
 

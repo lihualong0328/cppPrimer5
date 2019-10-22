@@ -9,21 +9,21 @@ C11_OBJECTS = copyNoMove.exe
 
 # tells make to use the file "..\MS_makefile_template", which
 # defines general rules for making .obj and .exe files
-include ..\MS_makefile_template
+include ../MS_makefile_template
 
-LOCFLAGS = /I..\1 -I..\7
+LOCFLAGS = -I../7 -I../1
 
-Folder.obj FolderMain.obj: Folder.h
-StrFolder.obj StrFolderMain.obj: StrFolder.h String.h
-String.obj: String.h
-useStrVec.obj StrVec.obj: String.h StrVec.h
+Folder.o FolderMain.o: Folder.h
+StrFolder.o StrFolderMain.o: StrFolder.h String.h
+String.o: String.h
+useStrVec.o StrVec.o: String.h StrVec.h
 
-useStrVec.exe: StrVec.obj useStrVec.obj
-	$(CPP) $(CPPFLAGS) $(LOCFLAGS) useStrVec.obj StrVec.obj
+useStrVec.exe: StrVec.o useStrVec.o
+	$(CPP) $(CPPFLAGS) $(LOCFLAGS) useStrVec.o StrVec.o
 
-FolderMain.exe: Folder.obj FolderMain.obj
-	$(CPP) $(CPPFLAGS) $(LOCFLAGS) FolderMain.obj Folder.obj
+FolderMain.exe: Folder.o FolderMain.o
+	$(CPP) $(CPPFLAGS) $(LOCFLAGS) FolderMain.o Folder.o
 
-StrFolderMain.exe: StrFolder.obj StrFolderMain.obj String.obj
-	$(CPP) $(CPPFLAGS) $(LOCFLAGS) StrFolderMain.obj StrFolder.obj String.obj 
+StrFolderMain.exe: StrFolder.o StrFolderMain.o String.o
+	$(CPP) $(CPPFLAGS) $(LOCFLAGS) StrFolderMain.o StrFolder.o String.o
 

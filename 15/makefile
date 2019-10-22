@@ -6,38 +6,38 @@ OBJECTS = andQueryTest.exe and_orQueryTest.exe \
 
 # tells make to use the file "..\MS_makefile_template", which
 # defines general rules for making .obj and .exe files
-include ..\MS_makefile_template
+include ../MS_makefile_template
 
-LOCFLAGS = /I..\12 -I..\6
+LOCFLAGS = -I../12 -I../6
 
-sample.obj useQuote.obj Quote.obj: Quote.h
-vecBasket.obj Basket_main.obj Basket.obj: Basket.h Quote.h
+sample.o useQuote.o Quote.o: Quote.h
+vecBasket.o Basket_main.o Basket.o: Basket.h Quote.h
 
-get_print.obj andQueryTest.obj and_orQueryTest.obj \
-wordQueryTest.obj Query.obj: Query.h ..\12\TextQuery.h
+get_print.o andQueryTest.o and_orQueryTest.o \
+wordQueryTest.o Query.o: Query.h ../12/TextQuery.h
 
-wordQueryTest.exe: Query.obj wordQueryTest.obj ..\12\TextQuery.obj get_print.obj
-	$(CPP) $(CPPFLAGS) $(LOCFLAGS) wordQueryTest.obj Query.obj \
-		..\12\TextQuery.obj get_print.obj 
+wordQueryTest.exe: Query.o wordQueryTest.o ../12/TextQuery.o get_print.o
+	$(CPP) $(CPPFLAGS) $(LOCFLAGS) wordQueryTest.o Query.o \
+		../12/TextQuery.o get_print.o
 
-andQueryTest.exe: Query.obj andQueryTest.obj ..\12\TextQuery.obj get_print.obj
-	$(CPP) $(CPPFLAGS) $(LOCFLAGS) andQueryTest.obj Query.obj \
-		..\12\TextQuery.obj get_print.obj 
+andQueryTest.exe: Query.o andQueryTest.o ../12/TextQuery.o get_print.o
+	$(CPP) $(CPPFLAGS) $(LOCFLAGS) andQueryTest.o Query.o \
+		../12/TextQuery.o get_print.o 
 
-and_orQueryTest.exe: and_orQueryTest.obj Query.obj ..\12\TextQuery.obj \
-		get_print.obj
-	$(CPP) $(CPPFLAGS) $(LOCFLAGS) and_orQueryTest.obj Query.obj \
-		..\12\TextQuery.obj get_print.obj 
+and_orQueryTest.exe: and_orQueryTest.o Query.o ../12/TextQuery.o \
+		get_print.o
+	$(CPP) $(CPPFLAGS) $(LOCFLAGS) and_orQueryTest.o Query.o \
+		../12/TextQuery.o get_print.o
 
-useQuote.exe: useQuote.obj Quote.obj
-	$(CPP) $(CPPFLAGS) $(LOCFLAGS) useQuote.obj Quote.obj 
+useQuote.exe: useQuote.o Quote.o
+	$(CPP) $(CPPFLAGS) $(LOCFLAGS) useQuote.o Quote.o
 
-vecBasket.exe: Basket.obj vecBasket.obj Quote.obj
-	$(CPP) $(CPPFLAGS) $(LOCFLAGS) vecBasket.obj Basket.obj Quote.obj 
+vecBasket.exe: Basket.o vecBasket.o Quote.o
+	$(CPP) $(CPPFLAGS) $(LOCFLAGS) vecBasket.o Basket.o Quote.o 
 
-Basket_main.exe: Basket.obj Basket_main.obj Quote.obj
-	$(CPP) $(CPPFLAGS) $(LOCFLAGS) Basket_main.obj Basket.obj Quote.obj 
+Basket_main.exe: Basket.o Basket_main.o Quote.o
+	$(CPP) $(CPPFLAGS) $(LOCFLAGS) Basket_main.o Basket.o Quote.o
 
-sample.exe: sample.obj Quote.obj
-	$(CPP) $(CPPFLAGS) $(LOCFLAGS) sample.obj Quote.obj 
+sample.exe: sample.o Quote.o
+	$(CPP) $(CPPFLAGS) $(LOCFLAGS) sample.o Quote.o
 
